@@ -114,15 +114,15 @@ Resources:
                 - ecs:DescribeTasks
                 - ecs:StopTask
               Resource:
-                - !Ref DockerTask
+                - !Ref algoliaToPG
                 - !Sub arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:task/*
         - Statement:
             - Effect: Allow
               Action:
                 - iam:PassRole
               Resource:
-                - !GetAtt DockerTask2ExecutionRole.Arn
-                - !GetAtt DockerTask2TaskRole.Arn
+                - !GetAtt algoliaToPGExecutionRole.Arn
+                - !GetAtt algoliaToPGTaskRole.Arn
                 - arn:aws:iam::666152625679:role/Snopes_Data_Pipeline
   algoliaToPGLogGroup:
     Type: AWS::Logs::LogGroup
